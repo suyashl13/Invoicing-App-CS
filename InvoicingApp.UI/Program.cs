@@ -20,3 +20,5 @@ else
 app.MapControllers();
 
 app.Run();
+
+partial class Program { }
