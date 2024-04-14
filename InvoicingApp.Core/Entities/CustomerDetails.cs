@@ -5,6 +5,7 @@ namespace InvoicingApp.Core.Entities;
 
 public class CustomerDetails
 {
+    [Key]
     public Guid CustomerDetailId { get; set; }
 
     public Guid InvoiceId { get; set; } 

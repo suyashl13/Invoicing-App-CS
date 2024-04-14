@@ -32,14 +32,22 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
         
         builder.Entity<Invoice>()
             .HasMany(invoice => invoice.InvoiceItems)
-            .WithOne(invoiceItem => invoiceItem.Invoice);           
+            .WithOne(invoiceItem => invoiceItem.Invoice);
+
+        builder.Entity<Invoice>()
+            .HasOne(invoice => invoice.CustomerDetails)
+            .WithOne(customerDetails => customerDetails.Invoice);
+            
             
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseSqlServer(""); // Your Sql Connection String here
+        if (_isMigration)
+        {
+            optionsBuilder.UseSqlServer(""); // Your Sql Connection String here   
+        }
     }
 
 }

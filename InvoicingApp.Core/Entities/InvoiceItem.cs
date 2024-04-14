@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace InvoicingApp.Core.Entities;
 
 public class InvoiceItem {
+
+    [Key]
     public Guid InvoiceItemId { get; set; }
     
     [Required]
